@@ -3,7 +3,7 @@ import joblib
 import numpy as np
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.sequence import pad_sequences
-from sklearn.preprocessing import label_encoder
+
 
 # ---------------------------
 # Page Config
@@ -20,11 +20,11 @@ st.set_page_config(
 @st.cache_resource
 def load_artifacts():
     tokenizer = joblib.load("tokenizer.pkl")
-    label_encoder = joblib.load("label_encoder.pkl")
+    # label_encoder = joblib.load("label_encoder.pkl")
     model = load_model("lstm_model.keras")
-    return tokenizer, label_encoder, model
+    return tokenizer, model
 
-tokenizer, label_encoder, lstm_model = load_artifacts()
+tokenizer, lstm_model = load_artifacts()
 
 MAX_LEN = 50
 PADDING_TYPE = "post"
