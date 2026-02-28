@@ -89,7 +89,8 @@ if st.button("🚀 Analyze Sentiment", use_container_width=True):
             predicted_class = np.argmax(prediction, axis=1)
             confidence = np.max(prediction)
 
-            sentiment = label_encoder.inverse_transform(predicted_class)[0]
+            class_names = ["negative", "neutral", "positive"]  # your original order
+            sentiment = class_names[predicted_class[0]]
 
         st.divider()
 
